@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel</title>
     <link rel="stylesheet" href="{{ asset('css/nes.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
   </head>
   <body>
       <div class="nes-field">
@@ -16,16 +17,9 @@
       </div>
   </body>
   <script type="text/javascript">
-    const socket = io("http://127.0.0.1");
-    var btnLogin = function(){
-      $.ajax({
-          url: '',
-          type: 'post',
-          data: {},
-          success: function (data) {
-            data
-          }
-        });
-    }
+    Echo.channel('user')
+    .listen('UserLogin', (e) => {
+        console.log(e);
+    });
   </script>
 </html>
