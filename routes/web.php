@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Events\UserLogin;
+use App\Repositories\CachedRepository;
+use App\Http\Controllers\RoomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,10 @@ use App\Events\UserLogin;
 */
 
 Route::get('/', function () {
-    $name = "sky";
-    UserLogin::dispatch($name);
     return view('welcome');
 });
+Route::get('/login', function(){
+    UserLogin::dispatch();
+});
+
+Route::get('/test/{id}',[RoomController::class, 'joinOrCreate']);

@@ -18,8 +18,8 @@
   </body>
   <script type="text/javascript">
     Echo.channel('user')
-    .listen('UserLogin', (e) => {
-        console.log(e);
+      .listen('UserLogin', (e) => {
+      console.log(e);
     });
   </script>
 </html>
